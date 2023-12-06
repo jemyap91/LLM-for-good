@@ -41,7 +41,7 @@ cffi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_62rp5
 chardet @ file:///opt/concourse/worker/volumes/live/7e1102c4-8702-40f2-63d6-f260ce5f85e4/volume/chardet_1607706831384/work
 charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
 chroma-hnswlib==0.7.3
-chromadb==0.3.29
+chromadb==0.4.18
 click==8.1.5
 click-didyoumean==0.3.0
 click-plugins==1.1.1
@@ -279,6 +279,7 @@ PyQt5-sip==12.11.0
 pyrsistent @ file:///opt/concourse/worker/volumes/live/76cffa60-bd33-4155-4e83-ea03c38b1294/volume/pyrsistent_1636111020441/work
 PySocks @ file:///opt/concourse/worker/volumes/live/112288ac-9cb0-4e73-768b-13baf4ca6419/volume/pysocks_1605305820043/work
 pyspark==3.4.1
+pysqlite3==0.5.2
 python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
 python-dotenv==1.0.0
 python-geohash==0.8.5
@@ -316,7 +317,7 @@ stack-data @ file:///opt/conda/conda-bld/stack_data_1646927590127/work
 starlette==0.27.0
 statsmodels==0.14.0
 stevedore==4.0.0
-streamlit
+streamlit==1.29.0
 sympy==1.12
 tabulate==0.8.10
 tangled-up-in-unicode==0.2.0
@@ -365,4 +366,3 @@ XlsxWriter==3.0.9
 yarl==1.9.3
 zipp @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_b71z79bye2/croot/zipp_1672387125902/work
 zstandard @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_40ayfv1xn6/croot/zstandard_1677014126754/work
-pysqlite3-binary
