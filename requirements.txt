@@ -5,3 +5,4 @@ chromadb
 pysqlite3-binary
 tiktoken
 pypdf
+faiss-cpu==1.7.4
