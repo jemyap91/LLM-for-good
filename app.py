@@ -63,8 +63,8 @@ def generate_response(uploaded_file, openai_api_key, query_text):
 
 
 # Page title
-st.set_page_config(page_title='Let\'s make Economics easy again!')
-st.title('Let\'s make Economics easy again!')
+st.set_page_config(page_title='TLDR Bot 📖 🤖')
+st.title('TLDR Bot 📖 🤖')
 
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='pdf')
