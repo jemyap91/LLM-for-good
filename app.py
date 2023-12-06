@@ -3,9 +3,10 @@ from langchain.llms import OpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader
 from langchain.chat_models import ChatOpenAI
+from langchain.vectorstores import FAISS
 
 from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import Chroma
+# from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 import tempfile
 
@@ -36,7 +37,7 @@ def generate_response(uploaded_file, openai_api_key, query_text):
         embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
         
         # Create a vectorstore from documents
-        db = Chroma.from_documents(
+        db = FAISS.from_documents(
             documents=splits,
             embedding=embeddings)
         
