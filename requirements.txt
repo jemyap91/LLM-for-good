@@ -41,7 +41,7 @@ cffi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_62rp5
 chardet @ file:///opt/concourse/worker/volumes/live/7e1102c4-8702-40f2-63d6-f260ce5f85e4/volume/chardet_1607706831384/work
 charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
 chroma-hnswlib==0.7.3
-chromadb==0.4.18
+chromadb==0.3.29
 click==8.1.5
 click-didyoumean==0.3.0
 click-plugins==1.1.1
