@@ -316,7 +316,7 @@ stack-data @ file:///opt/conda/conda-bld/stack_data_1646927590127/work
 starlette==0.27.0
 statsmodels==0.14.0
 stevedore==4.0.0
-streamlit==1.29.0
+streamlit
 sympy==1.12
 tabulate==0.8.10
 tangled-up-in-unicode==0.2.0
@@ -366,4 +366,3 @@ yarl==1.9.3
 zipp @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_b71z79bye2/croot/zipp_1672387125902/work
 zstandard @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_40ayfv1xn6/croot/zstandard_1677014126754/work
 pysqlite3-binary
-pysqlite3
