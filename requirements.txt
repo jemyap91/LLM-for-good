@@ -3,3 +3,6 @@ langchain
 openai
 chromadb
 tiktoken
+tempfile
+PyPDFLoader
+RecursiveCharacterTextSplitter
