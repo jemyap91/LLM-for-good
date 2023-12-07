@@ -3,7 +3,9 @@ from langchain.llms import OpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader
 from langchain.chat_models import ChatOpenAI
-# from langchain.vectorstores import FAISS
+from langchain.prompts import PromptTemplate
+
+import streamlit as st
 
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
@@ -44,7 +46,16 @@ def generate_response(uploaded_file, openai_api_key, query_text):
         db = Chroma.from_documents(
             documents=splits,
             embedding=embeddings)
-        
+
+        # Build prompt
+        template = """Use the following pieces of context to answer the question at the end. \
+            If you don't know the answer, just say that you don't know, don't try to make up an answer. Use three sentences maximum. \
+                Keep the answer as concise as possible. Always end with "Thanks for asking me, the tl;dr bot 📖 🤖 !" at the end of the answer. 
+        {context}
+        Question: {question}
+        Helpful Answer:"""
+        QA_CHAIN_PROMPT = PromptTemplate.from_template(template)
+
         # Create retriever interface
         retriever = db.as_retriever()
 
@@ -53,18 +64,22 @@ def generate_response(uploaded_file, openai_api_key, query_text):
         
         qa_chain = RetrievalQA.from_chain_type(
             llm,
-            chain_type='stuff',
-            retriever=retriever
+            chain_type_kwargs={"prompt": QA_CHAIN_PROMPT},
+            retriever=retriever,
+            return_source_documents=False
             )
+        
+        # Run chain
         result = qa_chain({"query": query_text})
 
-        return result['result']
-        # return qa.run(query_text)
+        answer = result['result']
+
+        return answer
 
 
 # Page title
-st.set_page_config(page_title='TLDR Bot 📖 🤖')
-st.title('TLDR Bot 📖 🤖')
+st.set_page_config(page_title='TL;DR Bot 📖 🤖')
+st.title('TL;DR Bot 📖 🤖')
 
 # File upload
 uploaded_file = st.file_uploader('Upload an article', type='pdf')
