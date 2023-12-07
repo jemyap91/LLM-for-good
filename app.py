@@ -49,8 +49,8 @@ def generate_response(uploaded_file, openai_api_key, query_text):
 
         # Build prompt
         template = """Use the following pieces of context to answer the question at the end. \
-            If you don't know the answer, just say that you don't know, don't try to make up an answer. Use three sentences maximum. \
-                Keep the answer as concise as possible. Always end with "Thanks for asking me, the tl;dr bot 📖 🤖 !" at the end of the answer. 
+            If you don't know the answer, just say that you don't know, don't try to make up an answer. Use between 1-10 sentences unless there is a lot of information to synthesize. \
+                Keep the answer concise but do not leave out important details. Always end with "Thanks for asking me, the tl;dr bot 📖 🤖 !" at the end of the answer. 
         {context}
         Question: {question}
         Helpful Answer:"""
