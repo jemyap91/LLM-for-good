@@ -1,4 +1,4 @@
-# TL;DR Bot - Chat with your documents
+# TL;DR Bot 📖 🤖 - Chat with your documents
 
 A chatbot powered by LangCHain that augments GPT 3.5 with the contents of your own documents.
 
