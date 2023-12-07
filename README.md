@@ -4,7 +4,7 @@ A chatbot powered by LangCHain that augments GPT 3.5 with the contents of your o
 
 ## Overview of the App
 
-<img src="ss_capture.png", width="50%">
+<img src="ss_capture.png, width=50%">
 
 - Takes user queries via Streamlit's `st.chat_input` and displays both user queries and model responses with `st.chat_message`
 - Uses RAG LangChain to load and index data and create a chat engine that will retrieve context from that data to respond to each user query
