@@ -12,7 +12,7 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 import tempfile
-import docx2txt
+# import docx2txt
 
 __import__('pysqlite3')
 import sys
