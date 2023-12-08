@@ -6,6 +6,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.document_loaders import Docx2txtLoader
 from langchain.document_loaders import UnstructuredWordDocumentLoader
+from langchain.document_loaders import Docx2txtLoader
 
 import streamlit as st
 
@@ -13,7 +14,6 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 import tempfile
-# import docx2txt
 
 __import__('pysqlite3')
 import sys
@@ -24,54 +24,49 @@ allowed_file_types = ["docx", "txt", "pdf"]
 
 def generate_response(uploaded_file, openai_api_key, query_text):
 
-    # # File upload
-    # allowed_file_types = ["docx", "txt", "pdf"]
-
     # Load document if file is uploaded
     if uploaded_file is not None:
 
         # Retrieve file extension
         file_extension = uploaded_file.name.split(".")[-1].lower()
 
+        # Select embeddings
+        embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+        
+        # Split documents into chunks
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size = 1500,
+            chunk_overlap = 150,
+            separators=["\n\n", "\n", " ", ""]
+        )  
+
         # Check if file extension allowed
         if file_extension in allowed_file_types:
 
-        # Read the content of the uploaded file as bytes
+            # Read the content of the uploaded file as bytes
             file_content = uploaded_file.read()
 
             # Save the content to a temporary file
             with tempfile.NamedTemporaryFile(delete=False, suffix=f".{file_extension}") as temp_file:
-                temp_file.write(file_content)
+                file = temp_file.write(file_content)
                 temp_file_path = temp_file.name
 
             if file_extension == 'pdf':
                 loader = PyPDFLoader(temp_file_path)
                 #Load the document by calling loader.load()
                 docs = loader.load()
-            
+                              
             elif file_extension == 'docx':
-                loader = UnstructuredWordDocumentLoader(temp_file_path)
+                loader = Docx2txtLoader(temp_file_path)
                 docs = loader.load()
 
-            # elif file_extension == 'txt':
-            #     docs = [uploaded_file.read().decode()]
-
-            # Split documents into chunks
-            text_splitter = RecursiveCharacterTextSplitter(
-                chunk_size = 1500,
-                chunk_overlap = 150,
-                separators=["\n\n", "\n", " ", ""]
-            )        
             splits = text_splitter.split_documents(docs)
-            
-            # Select embeddings
-            embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
-            
+   
             # Create a vectorstore from documents
             db = Chroma.from_documents(
                 documents=splits,
                 embedding=embeddings)
-
+            
             # Build prompt
             template = """Use the following pieces of context to answer the question at the end. \
                 If you don't know the answer, just say that you don't know, don't try to make up an answer. Use between 1-25 sentences unless there is a lot of information to synthesize. \
