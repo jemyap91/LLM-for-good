@@ -4,8 +4,10 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
+from langchain.schema import Document
 from langchain.document_loaders import Docx2txtLoader
-from langchain.document_loaders import Docx2txtLoader
+
+# from docx import Document as docx
 
 import streamlit as st
 
@@ -54,13 +56,22 @@ def generate_response(uploaded_file, openai_api_key, query_text):
                 loader = PyPDFLoader(temp_file_path)
                 #Load the document by calling loader.load()
                 docs = loader.load()
-                              
+                
+            
             elif file_extension == 'docx':
                 loader = Docx2txtLoader(temp_file_path)
                 docs = loader.load()
+                # word_doc = docx(uploaded_file)
+                # text = ''
+                # for split in word_doc.paragraphs:
+                #     text += split.text
+                # splitters = text_splitter.split_text(text)
+                # splits = []
+                # for split in splitters:
+                #     splits.append(Document(page_content=split))
 
             splits = text_splitter.split_documents(docs)
-   
+
             # Create a vectorstore from documents
             db = Chroma.from_documents(
                 documents=splits,
