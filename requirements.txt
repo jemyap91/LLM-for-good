@@ -7,3 +7,4 @@ pypdf
 PyPDF2
 pysqlite3-binary
 openai
+docx2txt
