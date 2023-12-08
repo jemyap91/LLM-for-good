@@ -4,7 +4,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
-from langchain.schema import Document
+# from langchain.schema import Document
 from langchain.document_loaders import Docx2txtLoader
 
 # from docx import Document as docx
