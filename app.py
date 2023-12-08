@@ -5,7 +5,6 @@ from langchain.document_loaders import PyPDFLoader
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.document_loaders import Docx2txtLoader
-from langchain.document_loaders import UnstructuredWordDocumentLoader
 from langchain.document_loaders import Docx2txtLoader
 
 import streamlit as st
