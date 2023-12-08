@@ -1,5 +1,5 @@
-streamlit
-langchain
+langchain==0.0.348
+streamlit==1.29.0
 openai
 chromadb
 tiktoken
