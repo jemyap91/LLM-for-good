@@ -5,6 +5,7 @@ from langchain.document_loaders import PyPDFLoader
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.document_loaders import Docx2txtLoader
+from langchain.document_loaders import UnstructuredWordDocumentLoader
 
 import streamlit as st
 
@@ -49,7 +50,7 @@ def generate_response(uploaded_file, openai_api_key, query_text):
                 docs = loader.load()
             
             elif file_extension == 'docx':
-                loader = Docx2txtLoader(temp_file_path)
+                loader = UnstructuredWordDocumentLoader(temp_file_path)
                 docs = loader.load()
 
             # elif file_extension == 'txt':
