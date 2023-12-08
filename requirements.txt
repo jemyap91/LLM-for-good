@@ -1,4 +1,4 @@
-python_version==3.8
+python_version==3.8.0
 langchain==0.0.348
 streamlit==1.29.0
 openai
@@ -8,4 +8,4 @@ pypdf
 PyPDF2
 pysqlite3-binary
 openai
-docx2txt==0.8
+docx2txt==0.8s
