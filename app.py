@@ -31,16 +31,6 @@ def generate_response(uploaded_file, openai_api_key, query_text):
         # Retrieve file extension
         file_extension = uploaded_file.name.split(".")[-1].lower()
 
-        # Select embeddings
-        embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
-        
-        # Split documents into chunks
-        text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size = 1500,
-            chunk_overlap = 150,
-            separators=["\n\n", "\n", " ", ""]
-        )  
-
         # Check if file extension allowed
         if file_extension in allowed_file_types:
 
@@ -61,16 +51,18 @@ def generate_response(uploaded_file, openai_api_key, query_text):
             elif file_extension == 'docx':
                 loader = Docx2txtLoader(temp_file_path)
                 docs = loader.load()
-                # word_doc = docx(uploaded_file)
-                # text = ''
-                # for split in word_doc.paragraphs:
-                #     text += split.text
-                # splitters = text_splitter.split_text(text)
-                # splits = []
-                # for split in splitters:
-                #     splits.append(Document(page_content=split))
+
+            # Split documents into chunks
+            text_splitter = RecursiveCharacterTextSplitter(
+                chunk_size = 1500,
+                chunk_overlap = 150,
+                separators=["\n\n", "\n", " ", ""]
+            ) 
 
             splits = text_splitter.split_documents(docs)
+
+            # Select embeddings
+            embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key) 
 
             # Create a vectorstore from documents
             db = Chroma.from_documents(
@@ -114,7 +106,8 @@ st.title('TL;DR Bot 📖 🤖')
 
 uploaded_file = st.file_uploader('Hi, I am Jemmet, the tl;dr 🤖. To start, upload a document, ask a question and enter your OpenAI API Key',
                                 #  accept_multiple_files=True,
-                                  type=allowed_file_types)
+                                  type=allowed_file_types,
+                                  accept_multiple_files=False)
 # Query text
 query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not uploaded_file)
 
