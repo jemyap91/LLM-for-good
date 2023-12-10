@@ -1,5 +1,10 @@
 # TL;DR Bot 📖 🤖 - Chat with your documents
 
+## Future Updates
+
+- Allow uploading of multiple documents
+- Allow retention of chat history
+  
 A chatbot powered by LangCHain that augments GPT 3.5 with the contents of your own documents.
 
 ## Overview of the App
