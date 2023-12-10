@@ -1,4 +1,5 @@
 # TL;DR Bot 📖 🤖 - Chat with your documents
+A chatbot powered by LangCHain that augments GPT 3.5 with the contents of your own documents.
 
 ## Future Updates
 
@@ -7,8 +8,6 @@
 
 ## New Fixes
 - Allow reading of word documents (docx) (Updated 9 Dec 2023)
-  
-A chatbot powered by LangCHain that augments GPT 3.5 with the contents of your own documents.
 
 ## Overview of the App
 
