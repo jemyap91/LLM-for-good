@@ -4,10 +4,11 @@ A chatbot powered by LangCHain that augments GPT 3.5 with the contents of your o
 ## Future Updates
 
 - Allow uploading of multiple documents
-- Allow retention of chat history
+
 
 ## New Fixes
 - Allow reading of word documents (docx) (Updated 9 Dec 2023)
+- Created chatbot with chat history ("master" branch)
 
 ## Overview of the App
 
