@@ -39,7 +39,7 @@ def generate_response(uploaded_file, openai_api_key, query_text):
 
             # Save the content to a temporary file
             with tempfile.NamedTemporaryFile(delete=False, suffix=f".{file_extension}") as temp_file:
-                file = temp_file.write(file_content)
+                temp_file.write(file_content)
                 temp_file_path = temp_file.name
 
             if file_extension == 'pdf':
