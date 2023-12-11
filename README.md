@@ -8,7 +8,7 @@ A chatbot powered by LangCHain that augments GPT 3.5 with the contents of your o
 
 ## New Fixes
 - Allow reading of word documents (docx) (Updated 9 Dec 2023)
-- Created chatbot with chat history ("master" branch)
+- Created Jemmet version 2! (chatbot with chat history). Visit Jememt v2 here: https://llm-for-good-jemmet-v2.streamlit.app/
 
 ## Overview of the App
 
