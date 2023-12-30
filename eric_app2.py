@@ -20,8 +20,20 @@ def configure_retriever():
     
     owner = 'jemyap91'
     repo = 'LLM-for-good'
-    file_paths = ['2022 H2 Market Failure Lecture Notes_final.pdf', '2022 H2 DDSS Lecture Notes_final_updated.pdf', '2022 H2 SOL Lecture Notes_final.pdf', '2022 H1H2 CPE Lecture Notes_final.pdf', '2022 JC 1 H2 Firms Decisions and Strategies Lecture Notes_final (1).pdf']
-    
+    # file_paths = ['2022 H2 Market Failure Lecture Notes_final.pdf', '2022 H2 DDSS Lecture Notes_final_updated.pdf', '2022 H2 SOL Lecture Notes_final.pdf', '2022 H1H2 CPE Lecture Notes_final.pdf', '2022 JC 1 H2 Firms Decisions and Strategies Lecture Notes_final (1).pdf']
+    file_paths = ['2022 H2 Market Failure Lecture Notes_final.pdf',\
+                '2022 H2 DDSS Lecture Notes_final_updated.pdf',\
+                '2022 H2 SOL Lecture Notes_final.pdf',\
+                '2022 H1H2 CPE Lecture Notes_final.pdf',\
+                '2022 JC 1 H2 Firms Decisions and Strategies Lecture Notes_final (1).pdf',\
+                '2023 H1 and H2 The Singapore Economy_FINAL.pdf',\
+                    '2023 H2 Interconnectedness edited_FINAL.pdf',\
+                        '2023 H2 International Economics Lecture Notes_FINAL.pdf',\
+                            '2023 H2 Macroeconomic Issues  and Policies (BOP)_FINAL.pdf',\
+                                'MLC_2023 H2 intro to Macro Analysis Lecture Notes_FINAL.pdf',\
+                                'MLC_2023 H2 Macro Issues and Policies Inflation Lecture Notes_FINALdocx.pdf',\
+                                    'MLC_2023 H2 Macroeconomic issues Growth _ Macro Policies Lecture Notes_FINAL.pdf',\
+                                        'MLC_2023 H2 Macroeconomic issues UnE _ Macro Policies Lecture Notes_FINAL.pdf']
     # Read documents
     docs = []
     temp_dir = tempfile.TemporaryDirectory()
