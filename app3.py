@@ -18,6 +18,8 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 st.set_page_config(page_title="LangChain: Chat with Eric the E-Teacher", page_icon="🤓")
 st.title("🤓 Chat with Eric the Econs E-Teacher about Economics!")
 
+os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
+
 @st.cache_resource(ttl="1h")
 def configure_retriever():
     
