@@ -68,15 +68,18 @@ def configure_retriever():
         # create the open-source embedding function
         embedding_function = OpenAIEmbeddings(deployment="SL-document_embedder",
                                             model='text-embedding-ada-002',
-                                            show_progress_bar=True) 
+                                            show_progress_bar=True)
+        
+        response = requests.get(dbdirectory)
+        index_data = BytesIO(response.content)
 
-
-        new_db = FAISS.load_local(persist_directory, embedding_function)
+        new_db = FAISS.load_local(index_data, embedding_function)
         
         print('Complete')
         return new_db
 
     dbdirectory = f"https://raw.githubusercontent.com/{owner}/{repo}/main/faiss/"
+    
     vectordb = load_vector_db('FAISS', dbdirectory)
 
     # Define retriever
