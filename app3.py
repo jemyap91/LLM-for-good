@@ -71,10 +71,14 @@ def configure_retriever():
                                             show_progress_bar=True)
         
         response = requests.get(dbdirectory)
-        index_data = BytesIO(response.content)
-
-        new_db = FAISS.load_local(index_data, embedding_function)
         
+    # Save the content of BytesIO to a temporary file
+        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+            temp_file.write(response.content)
+            temp_file_path = temp_file.name
+        
+        new_db = FAISS.load_local(temp_file_path, embedding_function)
+            
         print('Complete')
         return new_db
 
