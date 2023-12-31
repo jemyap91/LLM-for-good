@@ -76,7 +76,7 @@ def configure_retriever():
         print('Complete')
         return new_db
 
-    dbdirectory = f"https://raw.githubusercontent.com/{owner}/{repo}/main/documents/"
+    dbdirectory = f"https://raw.githubusercontent.com/{owner}/{repo}/main/faiss/"
     vectordb = load_vector_db('FAISS', '/Users/jemyap/Desktop/LLM-for-good-main/chroma/')
 
     # Define retriever
