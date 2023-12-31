@@ -23,8 +23,8 @@ os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 @st.cache_resource(ttl="1h")
 def configure_retriever():
     
-    # owner = 'jemyap91'
-    # repo = 'LLM-for-good'
+    owner = 'jemyap91'
+    repo = 'LLM-for-good'
     # file_paths = ['2022 H2 Market Failure Lecture Notes_final.pdf',\
     #               '2022 H2 DDSS Lecture Notes_final_updated.pdf',\
     #               '2022 H2 SOL Lecture Notes_final.pdf',\
@@ -64,7 +64,7 @@ def configure_retriever():
     # embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     # vectordb = DocArrayInMemorySearch.from_documents(splits, embeddings)
 
-    def embed_to_vector_db(db : str = 'FAISS', persist_directory : str = None ):
+    def load_vector_db(db : str = 'FAISS', persist_directory : str = None ):
         # create the open-source embedding function
         embedding_function = OpenAIEmbeddings(deployment="SL-document_embedder",
                                             model='text-embedding-ada-002',
@@ -76,7 +76,8 @@ def configure_retriever():
         print('Complete')
         return new_db
 
-    vectordb = embed_to_vector_db('FAISS', '/Users/jemyap/Desktop/LLM-for-good-main/chroma/')
+    dbdirectory = f"https://raw.githubusercontent.com/{owner}/{repo}/main/documents/"
+    vectordb = load_vector_db('FAISS', '/Users/jemyap/Desktop/LLM-for-good-main/chroma/')
 
     # Define retriever
     retriever = vectordb.as_retriever(search_type="mmr", search_kwargs={"k": 2, "fetch_k": 4})
