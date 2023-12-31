@@ -68,17 +68,8 @@ def configure_retriever():
         # create the open-source embedding function
         embedding_function = OpenAIEmbeddings(model='text-embedding-ada-002',
                                             show_progress_bar=True)
-        
-        response = requests.get(persist_directory)
-        
-    # Save the content of BytesIO to a temporary file
-        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-            temp_file.write(response.content)
-            temp_file_path = temp_file.name
-        
-        new_db = FAISS.load_local(temp_file_path, embedding_function)
-            
-        print('Complete')
+    
+        new_db = FAISS.load_local(persist_directory, embedding_function)
         return new_db
 
     dbdirectory = f"https://raw.githubusercontent.com/{owner}/{repo}/main/faiss/"
