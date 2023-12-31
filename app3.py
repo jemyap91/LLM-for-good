@@ -66,8 +66,7 @@ def configure_retriever():
 
     def load_vector_db(db : str = 'FAISS', persist_directory : str = None ):
         # create the open-source embedding function
-        embedding_function = OpenAIEmbeddings(deployment="SL-document_embedder",
-                                            model='text-embedding-ada-002',
+        embedding_function = OpenAIEmbeddings(model='text-embedding-ada-002',
                                             show_progress_bar=True)
         
         response = requests.get(persist_directory)
