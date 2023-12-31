@@ -70,7 +70,7 @@ def configure_retriever():
                                             model='text-embedding-ada-002',
                                             show_progress_bar=True)
         
-        response = requests.get(dbdirectory)
+        response = requests.get(persist_directory)
         
     # Save the content of BytesIO to a temporary file
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
